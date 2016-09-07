@@ -1,0 +1,272 @@
+/* Imports bootstap sass file into this sass file  available from (http://getbootstrap.com/) (TF)*/
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+
+
+/* fonts from https://www.fontsquirrel.com/fonts/josefin-sans available with the SIL Open Font License v1.10 (TF)*/
+@font-face {
+    font-family: 'josefin_sanssemibold';
+    src: url('../fonts/josefinsans-semibold-webfont.eot');
+    src: url('../fonts/josefinsans-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/josefinsans-semibold-webfont.woff2') format('woff2'),
+         url('../fonts/josefinsans-semibold-webfont.woff') format('woff'),
+         url('../fonts/josefinsans-semibold-webfont.ttf') format('truetype'),
+         url('../fonts/josefinsans-semibold-webfont.svg#josefin_sanssemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+@font-face {
+    font-family: 'josefin_sansbold';
+    src: url('../fonts/josefinsans-bold-webfont.eot');
+    src: url('../fonts/josefinsans-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/josefinsans-bold-webfont.woff2') format('woff2'),
+         url('../fonts/josefinsans-bold-webfont.woff') format('woff'),
+         url('../fonts/josefinsans-bold-webfont.ttf') format('truetype'),
+         url('../fonts/josefinsans-bold-webfont.svg#josefin_sansbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+/* $primary-color: #4169e1; */
+
+$primary-color: #0f2462;
+$accent-1: #EEE;
+
+.MainContainer{
+	margin-top: 7vh;
+}
+body{
+	/* background-color: #FFFAFA;  */
+	background-color: #FEFEFE; 
+}
+.leftColumn{
+	height: 100%;
+	border-right: 1px solid $accent-1;
+	/* border-bottom: 1px solid $accent-1; */
+	padding : 20px;
+	/* border-radius: 4px;
+	background-color: #eee;
+	border: 3px solid #ccc; */
+}
+.leftColumnBottom{
+	margin-bottom: 5vh;
+}
+.navbar{
+	background-color: $primary-color;
+	border-bottom: 1px solid $primary-color;
+	height: 5vh;
+	box-shadow: 0px 3px 5px #888888;
+}
+#navbar ul li a{
+	color: $accent-1;
+	font-size:1.5em;
+	font-family: josefin_sanssemibold; 
+	background-color: $primary-color;
+}
+#navbar ul li a:hover{
+	color: #ff0;
+}
+.navbar-inverse .navbar-brand{
+	color: $accent-1;
+}
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus{
+	background-color: $primary-color;
+}
+.watchImg{
+	height: 250px;
+}
+li {
+    list-style-type: none;
+}
+.thumbnail{
+	height: auto;
+	width: 80%;
+	margin-top: 5vh;
+
+}
+#profilePic{
+	height: auto;
+	width: 75%;
+	margin-top: none;
+}
+#changeProfile, #editThumbPhoto{
+	width: 75%;
+}
+.dropdown-menu{
+	background-color: $primary-color;
+}
+.dropdown-menu li a:hover{
+	background-color: #6687e7;
+}
+
+h1, .navbar-brand{
+	font-family: josefin_sansbold;
+}
+h2, h3, h4, h5, h6, .btn, a{
+	font-family: josefin_sanssemibold;
+}
+
+.navbar-brand{
+	font-size: 1.5em;
+}
+
+#homeHeader, #welcome{
+	color: $primary-color;
+}
+.homeButton{
+	color: $primary-color;
+	width: 50%;
+	margin-top: 10vh;
+	background-color: #fefefe;
+	border: 1px solid $primary-color;
+	font-size: 1.5em;
+	font-weight: bolder;
+}
+.homeButton:hover{
+	background-color: $primary-color;
+	color: #FEFEFE;
+	font-size: 1.5em;
+	font-weight: bolder;
+}
+#homeHeader{
+	font-size: 5em;
+}
+.top-margin{
+	margin-top: 5vh;
+}
+.margin-left{
+	margin-left: 1vw;
+}
+.bold{
+	font-weight: bold;
+}
+.btn-danger:hover{
+	background-color: #000;
+	color:  #B0171F;
+}
+.btn-danger{
+	background-color: #B0171F;
+	color: #FEFEFE;
+	font-size: 1.2em;
+}
+.btn-primary{
+	background-color: $primary-color;
+}
+.btn-primary:hover{
+	background-color: #153084;
+	color: #ff0;
+}
+.backgroundwatch{
+	width: 100%;
+	opacity: 0.5;
+	/*z-index: 100;*/
+}
+.backgroundwatch:hover{
+	opacity: 1;
+}
+.home-button-row{
+	margin-top: 15vh;
+}
+.ng-invalid:focus {
+  border-color: #FF0000;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+}
+.ng-valid:focus {
+  border-color: #00FF00;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 255, 0, 0.6);
+}
+.error{
+	color: $primary-color;
+	font-size: 1em;
+}
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #a7b9f1;
+}
+/* .table{
+	border: 1px solid #000;
+} */
+.boxed{
+	background-color: #EEE;
+	border-radius: 4px;
+	border: 3px solid #CCC;
+	width: 98%;
+}
+.Gborder{
+	background-color: #EEE;
+	border-radius: 4px;
+	border: 3px solid #CCC;
+}
+.feint:hover{
+	opacity: 0.8;
+}
+.watchLink{
+	font-size: 1.2em;
+	color: #111;
+}
+.watchLink:hover{
+	font-size: 1.2em;
+	color: $primary-color;
+	text-decoration: none;
+}
+#noAuctions{
+	margin-top: 20vh;
+	color: $primary-color;
+	font-family: josefin_sansbold;
+	font-size: 1.5em;
+}
+tr td a{
+	color: #010101;
+	text-decoration: none;
+	font-family: arial;
+}
+tr td a:hover{
+	color: $primary-color;
+	text-decoration: none;
+}
+.auctionTitle{
+	border-bottom: 1px solid #DDD;
+}
+#sellJumbotron{
+	border: 3px solid #CCC;
+}
+.absent{
+	margin-bottom: 10vh;
+}
+.margin-bottom{
+	margin-bottom: 5vh;
+}
+#viewSeller{
+	width: 60%;
+}
+.hint-text{
+	color: #BBB;
+	font-size: 0.8em;
+}
+#bidButton{
+	width: 60%;
+	margin-top: 5vh;
+}
+
+@media only screen  and (min-width : 768px) {
+	#profilePic{
+		width: 25%;
+	}
+	#changeProfile, #editThumbPhoto{
+		width: 25%;
+	}
+	#viewSeller{
+		margin-top: 5vh;
+	}
+	#PermissionBack{
+		width: 25%;
+	}
+
+}

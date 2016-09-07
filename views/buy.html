@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-md-3 leftColumn">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Search</h2>
+            </div>
+        </div>
+        <div class="row">
+            <form>
+                <div class="form-group col-md-12">
+                    <label for="brand">Keyword:</label>
+                    <input type="text" name="brand" class="form-control" id="" placeholder="Brand" ng-model="searchBrand">
+                </div>
+                <div class="row text-center">
+                    <button class="btn btn-primary text-center" ng-click="getAuctionByBrand()">Search by Keyword</button>
+                </div>
+                <hr>
+                <div class="form-group col-md-12 center-align">
+                    <label for="year">Year:</label>
+                    <select name="year" id="input" class="form-control center-align" required="required" ng-model="searchYear" required>
+                        <option ng-repeat="year in years" value="{{year}}">{{year}}</option>
+                    </select>
+                </div>
+                <div class="row text-center">
+                    <button class="btn btn-primary text-center" ng-click="getAuctionByYear()">Search by Year</button>
+                </div>
+                <hr>
+                <div class="form-group col-md-12 center-align">
+                    <label for="movement">Movement:</label>
+                    <select name="movement" id="input" class="form-control center-align" required="required" ng-model="searchMovement" required>
+                        <option value="Quartz">Quartz</option>
+                        <option value="Automatic">Automatic</option>
+                        <option value="Solar">Solar</option>
+                    </select>
+                </div>
+                <div class="row text-center">
+                    <button class="btn btn-primary text-center" ng-click="getAuctionByMovement()">Search by Movement</button>
+                </div>
+                <hr>
+                <div class="form-group col-md-12 center-align">
+                    <label for="strap">Strap:</label>
+                    <select name="strap" id="input" class="form-control center-align" required="required" ng-model="searchStrap" required>
+                        <option value="Leather">Leather</option>
+                        <option value="Metal">Metal</option>
+                        <option value="Rubber">Rubber</option>
+                        <option value="Ceramic">Ceramic</option>
+                    </select>
+                </div>
+                <div class="row text-center">
+                    <button class="btn btn-primary text-center" ng-click="getAuctionByStrap()">Search by Strap</button>
+                </div>
+                <hr>
+                <div class="row text-center">
+                    <button class="btn btn-primary text-center leftColumnBottom" ng-click="getAllAuctions()">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">Auctions</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-xs-12 text-center" ng-repeat="auction in auctions" ng-show="auction.status == null">
+                <a href="/#/auction/buy/{{auction.ID}}" ng-show="auction.thumbnail != null"><img class="thumbnail feint center-block" ng-show="auction.thumbnail != null" ng-src="{{auction.thumbnail}}" alt="Image of the watch"></a>
+                <a href="/#/auction/buy/{{auction.ID}}" ng-show="auction.thumbnail == null"><img class="thumbnail feint  center-block" ng-show="auction.thumbnail == null" src="img/NoThumbnail.png" alt="Image Signifiying that there is no thumbnail for this watch"></a>
+                <br>
+                <a href="/#/auction/buy/{{auction.ID}}" class=" watchLink"> {{auction.brand}} {{auction.model}} <hr> <span class="text-center"> £{{auction.price}}</span> </a>
+
+            </div>
+            <p ng-show="!auctions.length" class="text-center" id="noAuctions">No Auction Matches Your Search</p>
+        </div>
+    </div>
+</div>

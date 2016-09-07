@@ -1,0 +1,151 @@
+<div ng-show="watch.user_ID == userID">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">Add or Edit Photos for this Auction</h2>
+        </div>
+        <div class="col-md-12">
+            <a href="addImage.php?i={{watch.ID}}" class="btn btn-primary btn-lg center-block">Manage Auction Photos</a>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-center">Delete Thumbnail</h3>
+        </div>
+        <div class="col-md-12"  ng-show="watch.thumbnail != null">
+            <img class="thumbnail center-block" id="editThumbPhoto" ng-src="{{watch.thumbnail}}" alt="Image of watch thumbnal"><br>
+            <button class="center-block btn btn-danger" ng-click="deleteThumbnail(watch.ID)">Delete Photo</button>
+        </div>
+        <div class="col-md-12" ng-show="watch.thumbnail == null">
+            <p class="text-center">No Current Thumbnail</p>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-center">Delete Current Photos</h3>
+        </div>
+        <div class="col-md-4" ng-repeat="Image in watchImgs" ng-show="watchImgs.length > 0">
+            <img class="thumbnail center-block" ng-src="{{Image.Img_path}}" alt="Photo of watch for use on profile"><br>
+            <button class="center-block btn btn-danger" ng-click="deletePhoto(Image.ID)">Delete Photo</button>
+        </div>
+        <div class="col-md-12" ng-show="!watchImgs.length">
+            <p class="text-center">No Images Uploaded</p>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-center">Edit Auction</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p>current details</p>
+            <ul>
+                <li>Brand: {{watch.brand}}</li>
+                <li>Model: {{watch.model}}</li>
+                <li>Year: {{watch.year}}</li>
+                <li> End Date: {{watch.end_date}}</li>
+                <li>{{watch.movement}}</li>
+                <li>{{watch.strap}}</li>
+                <li>{{watch.description}}</li>
+                <li>{{watch.price}}</li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <p>*All fields must be re-filled</p>
+        </div>
+        <div class="col-md-12">
+            <form name="updateForm">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="brand">Brand:</label>
+                    <input type="text" name="brand" class="form-control" id="" placeholder="{{watch.brand}}" value="{{watch.brand}}" ng-model="editbrand" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="model">Model:</label>
+                    <input type="text" name="model" class="form-control" id="" placeholder="{{watch.model}}" value="{{watch.model}}" ng-model="editmodel" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-4 center-align">
+                    <label for="year">Year:</label>
+                    <select name="year" id="input" class="form-control center-align" required="required" ng-model="edityear" required>
+                        <option ng-repeat="year in years" value="{{year}}">{{year}}</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4 center-align">
+                    <label for="movement">Movement:</label>
+                    <select name="movement" id="input" class="form-control center-align" required="required" ng-model="editmovement" required>
+                        <option value="Quartz">Quartz</option>
+                        <option value="Automatic">Automatic</option>
+                        <option value="Solar">Solar</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4 center-align">
+                    <label for="strap">Strap:</label>
+                    <select name="strap" id="input" class="form-control center-align" required="required" ng-model="editstrap" required>
+                        <option value="Leather">Leather</option>
+                        <option value="Metal">Metal</option>
+                        <option value="Rubber">Rubber</option>
+                        <option value="Ceramic">Ceramic</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="end_date">End Date:</label>
+                <input name="end_date" type="date" class="form-control" value="{{watch.end_date}}" ng-model="edit_end_date">
+            </div>
+            <div class="form-group">
+                <label for="desc">Description:</label>
+                <textarea name="desc" id="input" class="form-control" rows="10" ng-model="editdescription" placeholder="{{watch.description}}" required>{{watch.description}}</textarea>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="sr-only" for="bidAmount">Amount (in Pounds)</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">£</div>
+                            <input type="number" name="price" class="form-control" id="" value="{{watch.price}}" placeholder="Cost in £" ng-model="editprice" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            </form>
+            <div class="row text-center">
+                <button class="btn btn-primary text-center" ng-click="editAuction()"> Update</button>
+            </div>
+            <div class="row text-center">
+                <p class="error">{{errorText}}</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <a href="addImage.php?i={{watch.ID}}" class="btn btn-primary pull-left">Add Image</a>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-danger pull-right" ng-click="deleteAuction()">Delete Auction</button>
+        </div>
+    </div>
+</div>
+<div <div ng-show="watch.user_ID != userID">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">You do not have permission to view this page</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-primary center-block" id="PermissionBack" href="/#/">Return</a>
+        </div>
+    </div>
+</div>

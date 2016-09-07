@@ -1,0 +1,93 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="text-center">{{profile.username}}'s Profile</h2>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <img src="img/NoThumbnail.png" class="thumbnail  center-block" id="profilePic" ng-show="profile.profilePic == null" alt="Signifies this user doesnt have a profile picture">
+                <img ng-src="{{profile.profilePic}}" class="thumbnail center-block" id="profilePic" ng-show="profile.profilePic != null" alt="User profile picture">
+                <a ng-show="profileID == userID" href="addProfileImage.php?i={{userID}}" class="btn btn-primary center-block" id="changeProfile">Change Profile Picture</a>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12 col-xs-12 boxed">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="text-center">User Information</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p>Username: {{profile.username}}</p>
+                        <p>Email: {{profile.email}}</p>
+                        <p>Role:  {{profile.role}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">
+            Selling
+        </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 text-center" ng-repeat="auction in selling track by auction.ID" ng-show="auction.status == null">
+                <a href="/#/auction/buy/{{auction.ID}}" ng-show="auction.thumbnail != null"><img class="thumbnail feint center-block" ng-show="auction.thumbnail != null" ng-src="{{auction.thumbnail}}" alt="Image of watch user is selling"></a>
+                <a href="/#/auction/buy/{{auction.ID}}" ng-show="auction.thumbnail == null"><img class="thumbnail feint center-block" ng-show="auction.thumbnail == null" src="img/NoThumbnail.png" alt="Image to show watch user is selling has no thumbnail"></a>
+                <br>
+                <a href="/#/auction/buy/{{auction.ID}}" class="watchLink"> {{auction.brand}} {{auction.model}} <br> <span class="text-center"> £{{auction.price}}</span> </a>
+            </div>
+            <p ng-show="!selling.length" class="text-center absent">This user is not currently selling any items</p>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12" ng-show="auctionBids.length > 0">
+                <h2 class="text-center">User Bids</h2>
+            </div>
+            <!-- This is a bootstrap table with alternated coloured stripes, i have changed the css values for color on these stripes, the table is populated by data binded values from my database. (TD)-->
+            <div class="col-md-12">
+                <table class="table table-striped text-center" ng-show="auctionBids.length > 0">
+                    <tr class="text-center">
+                        <th class="text-center">Auction ID</th>
+                        <th class="text-center">Bid Amount</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center" ng-show="profileID == userID"> Cancel</th>
+                    </tr>
+                    <tr ng-repeat="bid in auctionBids track by bid.ID">
+                        <td><a href="/#/auction/buy/{{bid.auctionID}}">{{bid.auctionID}}</a></td>
+                        <td>£{{bid.amount}}</td>
+                        <td>{{bid.status}}</td>
+                        <td ng-show="profileID == userID && bid.status == 'Open'"> <span><button ng-click="cancelBid(bid.ID)" class="btn btn-primary">Cancel Bid</button></span></td>
+                        <td ng-hide="profileID == userID && bid.status == 'Open'"></td>
+                    </tr>
+                </table>
+                <h2 class="text-center absent" ng-show="!auctionBids.length">No Bids to show</h2>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">User Purchased</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 margin-bottom">
+                <div class="col-md-4 text-center" ng-repeat="auction in userPurchased">
+                    <a href="/#/auction/buy/{{auction.ID}}" ng-show="auction.thumbnail != null"><img class="thumbnail center-block" ng-show="auction.thumbnail != null" ng-src="{{auction.thumbnail}}" alt="Image of watch user has brought"></a>
+                    <a href="/#/auction/buy/{{auction.ID}}" ng-show="auction.thumbnail == null"><img class="thumbnail center-block" ng-show="auction.thumbnail == null" src="img/NoThumbnail.png" alt="image that shows the watch the user has brought has no thumbnail"></a>
+                    <br>
+                    <a href="/#/auction/buy/{{auction.ID}}" class="watchLink"> {{auction.brand}} {{auction.model}}</a>
+                </div>
+                <p ng-show="!userPurchased.length" class="text-center absent">User is yet to make a purchase</p>
+            </div>
+        </div>
+    </div>
+</div>

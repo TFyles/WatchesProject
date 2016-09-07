@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" ng-app="WatchApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Buy and sell your watch with our easy to use auction services">
+    <title>Wallys-Watches</title>
+    <!-- This project uses dropzone.js (http://www.dropzonejs.com/) as explained in UploadImage UploadProfileImage and uploadThumbImage.php this is used for drop based image upload (TF)-->
+    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+    <!-- For references see JS script links at bottom of body (TF)-->
+    <link rel="stylesheet" type="text/css" href="bower_components/sweetalert/dist/sweetalert.css">   
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="icon" href="favicon.png" type="image/png" />
+</head>
+
+<body>
+    <!-- This nav is a edited version of a bootstrap nav, i have kept the hamburger navigation features Changes are as follows
+    # Aligment of nav items
+    # Addition of dropdown which uses adaptive links
+    # CSS styles (Colour, box shadow, Height , Border)
+    # Hover Effects
+    (TF) -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/#/">Wallys Watches</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse navbar-right">
+                <ul class="nav navbar-nav">
+                    <li><a data-toggle="collapse" data-target=".navbar-collapse"  href="/#/">Home</a></li>
+                    <li><a data-toggle="collapse" data-target=".navbar-collapse"  href="/#/auction/buy">Buy</a></li>
+                    <li><a data-toggle="collapse" data-target=".navbar-collapse"  href="/#/auction/sell">Sell</a></li>
+                    <li ng-show="loggedIn" role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-label="Open profile dropdown" aria-haspopup="true" aria-expanded="false">
+                Profile <span class="caret"></span>
+              </a>
+                        <ul class="dropdown-menu">
+                            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="/#/profile/{{loggedInUserID}}">View Profile</a></li>
+                            <li><a data-toggle="collapse" data-target=".navbar-collapse"  href="/#/logout">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="MainContainer container">
+    <!-- All views load in this ng-view div (TF)-->
+        <div ng-view></div>
+    </div>
+
+
+    <!-- This project uses Jquery available at (https://jquery.com/) None of my code actually uses this, it is however required by the bootstrap framework. In my app this Jquery is used in the hamburger navigation on this page (TF)-->
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
+    <!-- This project uses SweetAlert(http://t4t5.github.io/sweetalert/) for flash messaging, usage is seen in controllers.js (TF)-->
+    <script type="text/javascript" src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- This project uses the bootstrap (http://getbootstrap.com/) framework for some front end components the most prevelent features are listed below, and larger implementations are commented when used
+    # Row and Col classes for responsive grid
+    # text-center and center-block classes for alignment
+    # btn classes for buttons (Most implementations are heavily edited in index.css)
+    (TF)-->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- This project is built using the angular.JS () framework, all code is wrote based on its features and its practices  (TF)-->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+
+    <!-- Not minified due to the effect of minfication on dependecy names (TF)-->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+</body>
+
+</html>

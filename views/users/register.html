@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="text-center">Register</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 jumbotron Gborder">
+        <form name="registerForm">
+            <div class="row text-center">
+                <div class="form-group col-md-12">
+                    <label for="regname">Username:</label>
+                    <br>
+                    <input type="text" name="regname" class="form-control" ng-model="regUsername" value="" / required="required">
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class=" form-group col-md-12">
+                    <label for="regemail">Email:</label>
+                    <br>
+                    <input type="email" name="regemail" class="form-control" ng-model="regEmail" value="" required="required" />
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class=" form-group col-md-12">
+                    <label for="regpassword">Password:</label>
+                    <br>
+                    <input type="password" name="regpassword" class="form-control" ng-model="regPassword" value="" required="required" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a href="" class="btn btn-primary" ng-click="Register()">Register</a>
+                </div>
+            </div>
+            <div class="row text-center">
+                <p class="error">{{errorText}}</p>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>

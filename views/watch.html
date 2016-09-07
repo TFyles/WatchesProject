@@ -1,0 +1,117 @@
+<div class="row auctionTitle">
+    <div class="col-md-12">
+        <h1 class="text-center">{{watch.brand}} {{watch.model}}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3 leftColumn">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="bold text-center">Name</p>
+            </div>
+            <div class="col-md-12 text-center">
+                <h3>{{watch.brand}} {{watch.model}}</h3>
+            </div>
+        </div>
+        <hr>
+        <div class="row top-margin">
+            <div class="col-md-12">
+                <p class="bold text-center">Specification</p>
+            </div>
+            <div class="col-md-12">
+                <ul class=" pull-left">
+                    <li>Year: {{watch.year}}</li>
+                    <li>Movement Type: {{watch.movement}}</li>
+                    <li>Strap Type: {{watch.strap}}</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="bold text-center"> Auction Details</p>
+            </div>
+            <div class="col-md-12">
+                <ul class="pull-left">
+                    <li>End Date: {{watch.end_date}}</li>
+                    <li>Minimum Starting Bid: £{{watch.price}}</li>
+                </ul>
+            </div>
+            <hr>
+            <div class="col-md-12" ng-show="watch.user_ID != userID">
+                <a href="/#/profile/{{watch.user_ID}}" id="viewSeller" class="btn btn-primary center-block">View Seller</a>
+            </div>
+        </div>
+        <hr>
+        <div class="row" ng-show="watch.user_ID != userID " ng-show="watch.status == null">
+            <div class="col-md-12">
+                <p class="bold text-center"> Bid</p>
+            </div>
+            <div class="col-md-12 text-center">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" for="bidAmount">Amount (in Pounds)</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">£</div>
+                            <input type="text" class="form-control" ng-model="bidAmount" id="bidAmount" placeholder="Amount">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-12">
+                <button ng-click="Bid()" class="btn btn-primary center-block text-center" id="bidButton">Bid</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            <div class="col-md-4" ng-repeat="Image in watchImgs" ng-show="watchImgs.length > 0">
+                <img class="watchImg center-block" ng-src="{{Image.Img_path}}" alt="Image of watch for sale">
+            </div>
+            <div class="col-md-12 text-center">
+                <p ng-show="!watchImgs.length">No Images to show</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row boxed center-block">
+            <div class="col-md-12">
+                <h3 class="text-center">Description</h3>
+            </div>
+            <div class="col-md-12">
+                <p>{{watch.description}}</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-center">Bids</h3>
+            </div>
+            <!-- This is a bootstrap table with alternated coloured stripes, i have changed the css values for color on these stripes, the table is populated by data binded values from my database. (TD)-->
+            <div class="col-md-12 text-center">
+                <table class="table table-striped" ng-show="watchBids.length > 0">
+                    <tr class="text-center">
+                        <th class="text-center">Bidder ID</th>
+                        <th class="text-center">Bid Amount</th>
+                        <th class="text-center" ng-show="watch.user_ID == userID"> Accept</th>
+                        <th class="text-center" ng-show="watch.user_ID == userID"> Decline</th>
+                        <th class="text-center" ng-show="watch.user_ID != userID"> Cancel</th>
+                    </tr>
+                    <tr ng-repeat="bid in watchBids track by bid.ID">
+                        <td><a href="/#/profile/{{bid.buyerID}}">{{bid.buyerID}}</a></td>
+                        <td>£{{bid.amount}}</td>
+                        <td ng-show="watch.user_ID == userID"> <span><button ng-click="acceptBid(bid.ID, bid.buyerID, bid.auctionID)" class="btn btn-primary">Accept Bid</button></span></td>
+                        <td ng-show="watch.user_ID == userID"> <span><button ng-click="declineBid(bid.ID)" class="btn btn-primary">Decline Bid</button></span></td>
+                        <td ng-show="watch.user_ID != userID"> <span><button ng-click="cancelBid(bid.ID)" class="btn btn-primary">Cancel Bid</button></span></td>
+                    </tr>
+                </table>
+                <p ng-show="!watchBids.length" class="text-center absent">No Bids to show</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="cold-md-12">
+                <a ng-show="watch.user_ID == userID" class="btn center-block btn-primary" href="/#/auction/edit/{{watch.ID}}">Edit your auction</a>
+            </div>
+        </div>
+    </div>
+</div>
